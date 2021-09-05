@@ -26,14 +26,19 @@ def denied_validation(answers_dict):
 
 	return denied
 
-st.image("img/bytebank_logo.png")
-st.write("# Credit Scoring Simulator")
+def local_css(file_name):
+    with open(file_name) as f:
+        st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
+local_css("style.css")
 
-expander_1 = st.beta_expander("Personal Information")
+st.image("img/bytebank_logo_white.png")
+st.markdown("<h1 style='text-align: center; color: black;'>🪙 Bytebank Credit Evaluation 🪙</h1>", unsafe_allow_html=True)
 
-expander_2 = st.beta_expander("Work Information")
+expander_1 = st.beta_expander("👤 Personal Information")
 
-expander_3 = st.beta_expander("Family Information")
+expander_2 = st.beta_expander("💼 Work Information")
+
+expander_3 = st.beta_expander("👥 Family Information")
 
 answers_dict = {}
 categories_list = load("objects/categories_list.joblib")
@@ -68,11 +73,6 @@ with expander_2:
     answers_dict['years_working'] = col4_form.slider('How long have you been working (in years)?', help = 'The slider can be moved using the arrow keys.', min_value = 0, max_value = 50, step = 1)
 
     answers_dict['years_unemployed'] = col4_form.slider('How long have you been unemployed (in years)?', help = 'The slider can be moved using the arrow keys.', min_value = 0, max_value = 50, step = 1)
-
-
-
-
-    
 
 with expander_3:
 
