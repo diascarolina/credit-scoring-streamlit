@@ -32,13 +32,11 @@ def local_css(file_name):
 local_css("style.css")
 
 st.image("img/bytebank_logo_white.png")
-st.markdown("<h1 style='text-align: center; color: black;'>🪙 Bytebank Credit Evaluation 🪙</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align: center; color: black;'>💳 Bytebank Credit Evaluation 💳</h1>", unsafe_allow_html = True)
 
-'''
-Welcome to **Bytebank Credit Evaluation**. Fill the information below and click **Evaluate Credit** to check if you will have your credit approved or denied at Bytebank.
+st.markdown("Welcome to **Bytebank Credit Evaluation**. Fill the information below and click **Evaluate Credit** to check if you will have your credit <span style='color: green'>approved</span> or <span style='color: red'>denied</span> at Bytebank.", unsafe_allow_html = True)
 
-**Disclaimer**: Bytebank is a fictional bank for educational purposes only. The evaluation is made with a machine learning model. More details can be found [here at the project repository](https://github.com/diascarolina/credit-scoring-streamlit).
-'''
+st.caption("**Disclaimer**: Bytebank is a fictional bank for educational purposes only. The evaluation is made with a machine learning model. More details can be found [here at the project repository](https://github.com/diascarolina/credit-scoring-streamlit).")
 
 expander_1 = st.beta_expander("👤 Personal Information")
 
@@ -94,6 +92,6 @@ with expander_3:
 
 if st.button('Evaluate Credit') and validate_data(answers_dict):
 	if denied_validation(answers_dict):
-		st.error('Credit Denied.')
+		st.image("img/denied.gif")
 	else:
-		st.success('Credit Approved.')
+		st.image("img/approved.gif")
